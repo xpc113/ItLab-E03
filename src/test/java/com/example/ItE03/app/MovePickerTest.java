@@ -17,28 +17,23 @@ class MovePickerTest {
 
     MovePicker underTest;
 
-    @BeforeEach
-    void setup() {
-        underTest = new MovePicker();
-    }
-
     @Test
     void givenSetSizeIsOne_whenPickOne_thenPicksSingleElement() {
         Move rock = move(1, "Rock");
         Set<Move> moves = Sets.newHashSet(rock);
-
-        assertThat(underTest.pickOne(moves), is(rock));
+        underTest = new MovePicker(moves);
+        assertThat(underTest.pickOne(), is(rock));
     }
 
     @RepeatedTest(10)
     void givenStandardRpsMovesSet_whenPickOne_thenPickedIsOneOfThisMoveSet() {
-        Set<Move> moves = rpsMoves();
-        assertThat(underTest.pickOne(moves), is(in(moves)));
+        underTest = new MovePicker(rpsMoves());
+        assertThat(underTest.pickOne(), is(in(rpsMoves())));
     }
 
     Set<Move> rpsMoves() {
         return Sets.newHashSet(move(1, "Rock"),
                 move(2, "Paper"),
-                move(1, "Scissors"));
+                move(3, "Scissors"));
     }
 }
