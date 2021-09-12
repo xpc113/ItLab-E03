@@ -49,6 +49,12 @@
 			<artifactId>asciitable</artifactId>
 			<version>0.3.2</version>
 		</dependency>
+		<!-- https://github.com/beryx/text-io -->
+		<dependency>
+			<groupId>org.beryx</groupId>
+			<artifactId>text-io</artifactId>
+			<version>3.4.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
