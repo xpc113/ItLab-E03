@@ -8,6 +8,8 @@ import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Set;
 
+import static com.example.ItE03.utils.MyPreconditions.checkNotNullOrEmpty;
+
 public class MovePicker {
 
     private final Set<Move> moves;
@@ -24,10 +26,5 @@ public class MovePicker {
                 .skip(secureRandom.nextInt(moves.size()))
                 .findFirst()
                 .orElse(null);
-    }
-
-    private void checkNotNullOrEmpty(Collection<?> moves) {
-        Preconditions.checkNotNull(moves);
-        Preconditions.checkArgument(moves.size() > 0);
     }
 }

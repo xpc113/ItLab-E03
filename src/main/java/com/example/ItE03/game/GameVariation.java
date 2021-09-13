@@ -1,31 +1,26 @@
 package com.example.ItE03.game;
 
+import com.example.ItE03.utils.MyPreconditions;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSortedSet;
 import org.apache.commons.collections4.iterators.LoopingIterator;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class GameVariation {
 
     private final LinkedHashSet<Move> moves;
 
     public GameVariation(List<String> moveNames) {
-        Preconditions.checkNotNull(moveNames);
-        checkIfOdd(moveNames, "moveNames must contain odd number of elements");
+        MyPreconditions.checkNotNullOrEmpty(moveNames);
+        MyPreconditions.checkIfOdd(moveNames, "moveNames must contain odd number of elements");
+        MyPreconditions.checkIfDistinct(moveNames, "moveNames must contain distinct strings");
+
         moves = moveNames.stream()
                 .distinct()
-                .map(name -> new Move(moveNames.indexOf(name)+1, name))
+                .map(name -> new Move(moveNames.indexOf(name) + 1, name))
                 .collect(Collectors.toCollection(LinkedHashSet::new));
-        Preconditions.checkArgument(moves.size() == moveNames.size(),
-                "moveNames must contain distinct strings");
-    }
-
-    private static void checkIfOdd(List<?> list, String msg) {
-        Preconditions.checkArgument(list.size() % 2 != 0,
-                msg);
     }
 
     private void checkMove(Move move) {
