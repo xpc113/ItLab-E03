@@ -9,8 +9,14 @@ import java.util.Set;
 public class MyPreconditions {
 
     public static void checkNotNullOrEmpty(Collection<?> collection) {
-        Preconditions.checkNotNull(collection);
-        Preconditions.checkArgument(collection.size() > 0);
+        String msg = collection + " must not be null or empty";
+        Preconditions.checkNotNull(collection, msg);
+        Preconditions.checkArgument(collection.size() > 0, msg);
+    }
+
+    public static void checkNotNullOrEmpty(Collection<?> collection, String msg) {
+        Preconditions.checkNotNull(collection, msg);
+        Preconditions.checkArgument(collection.size() > 0, msg);
     }
 
     public static void checkIfOdd(Collection<?> collection) {

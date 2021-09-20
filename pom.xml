@@ -40,6 +40,13 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>4.4</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.15</version>
+		</dependency>
+
 
 
 		<!-- https://mvnrepository.com/artifact/de.vandermeer/asciitable -->
@@ -81,7 +88,7 @@
 						<configuration>
 							<classifier>spring-boot</classifier>
 							<mainClass>
-								com.example.DeliveryAgent.DeliveryAgentApplication
+								com.example.ItE03.ItE03Application
 							</mainClass>
 						</configuration>
 					</execution>
